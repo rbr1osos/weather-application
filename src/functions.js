@@ -116,12 +116,13 @@ export function displayWeek(input,min_temp,max_temp,icon){
     const avg_low =  document.createElement('h3')
     avg_low.innerHTML=Math.round(min_temp)+'°'
     avg_temp_container.appendChild(avg_low)
+
+    const temp_bar = document.createElement('div')
+    temp_bar.classList.add('temp-bar')
+    avg_temp_container.appendChild(temp_bar)
+    
     const avg_high = document.createElement('h3')
     avg_high.innerHTML=Math.round(max_temp)+'°'
     avg_temp_container.appendChild(avg_high)
     week_content.appendChild(avg_temp_container)
-
-    // console.log(input)
-    //create containers
-    //crea
 }

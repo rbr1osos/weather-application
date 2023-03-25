@@ -7,7 +7,9 @@ html{
     width:100vw;
 }
 body{
-
+    background-image: url('./background.svg');
+    background-repeat: no-repeat;
+    background-size:cover;
     margin:32px;
     display:flex;
     justify-content: center;
@@ -21,7 +23,7 @@ body{
     gap:16px;
 }
 
-/* BORDERSS */
+/* BORDERS */
 #search,
 .left-container,
 .UV-container, 
@@ -31,8 +33,12 @@ body{
 .sunrise-container,
 .sunset-container,
 .pressure-container,
-.visibility-container{
-    border-radius:4px
+.visibility-container,
+.hourly-container{
+    border-radius:4px;
+    background: rgba(39, 39, 39, 0.4); 
+    border: 1px solid rgba(80, 80, 80, 0.4);
+
 }
 
 .header{
@@ -57,7 +63,6 @@ body{
     color:white;
     font-size: 1rem;
     padding:4px;
-    border: 1px solid white;
 }
 
 .content{
@@ -98,7 +103,6 @@ body{
 .hourly-container{
     display:flex;
     flex-direction: column;
-    border:1px solid white;
     grid-area: 1/1/2/3;
     border-radius: 8px;
 }
@@ -131,7 +135,6 @@ body{
     flex:1;
     flex-direction: column;
     padding:8px;
-    border:1px solid white;
     gap:4px;
     font-size:14px;
 }
@@ -185,12 +188,20 @@ body{
 .weekly-content>h3{
     width:88px;
     padding-right:8px;
+    text-align: center;
+}
+.temp-bar{
+    background:linear-gradient(90deg,yellow,red);
+    height:4px;
+    flex:1;
 }
 .avg-container{
     display:flex;
+    gap:8px;
     align-items: center;
     flex:1;
     justify-content: space-between;
+    
 }
 .week-icon{
     width:40px;
