@@ -50,64 +50,45 @@ export function todayTemp(input){
     const currentHour = input.time
     if(isThisHour(parseISO(currentHour))){
         const current_temp=document.querySelector('.temp')
-        current_temp.innerHTML= Math.round(input.temp_f)
+        current_temp.innerHTML= Math.round(input.temp_f)+'°'
     }
 }
-// function getDayType(day){
-//     let currentDay;
-//     switch(day){
-//         case 0:
-//             day = "Sunday";
-//             break;
-//         case 1:
-//             day = "Monday";
-//             break;
-//         case 2:
-//             day = "Tuesday";
-//             break;
-//         case 3:
-//             day = "Wednesday";
-//             break;
-//         case 4:
-//             day = "Thursday";
-//             break;
-//         case 5:
-//             day = "Friday";
-//             break;
-//         case 6:
-//             day = "Saturday";
-//     }
-//     return currentDay
-// }
+
 export function createWeek(input){
-    // let newNumber = new Date(input.date)
-    // getDayType(getDay(newNumber))
-    console.log(getDay(new Date(input.date)))
+    console.log(input)
+    let day;
+    //displays DAYS
     switch(getDay(new Date(input.date))){
         case 0:
-            displayWeek("Sunday");
+            day= "Sunday";
             break;
           case 1:
-            displayWeek("Monday");
+            day="Monday";
             break;
           case 2:
-            displayWeek("Tuesday");
+            day="Tuesday";
             break;
           case 3:
-            displayWeek("Wednesday");
+            day="Wednesday";
             break;
           case 4:
-            displayWeek("Thursday");
+            day="Thursday";
             break;
           case 5:
-            displayWeek("Friday");
+            day="Friday";
             break;
           case  6:
-            displayWeek("Saturday");
+            day="Saturday";
         }
+
+    //min temp
+    const min_temp = input.day.mintemp_f
+    const max_temp = input.day.maxtemp_f
+
+        displayWeek(day,min_temp,max_temp)
 }
 
-export function displayWeek(input){
+export function displayWeek(input,min_temp,max_temp){
 
     //create function that display the DAY (sunday,monday,etc)
     const week_container = document.querySelector('.weekly-container')
@@ -125,10 +106,10 @@ export function displayWeek(input){
     const avg_temp_container  = document.createElement('div')
     avg_temp_container.classList.add('avg-container')
     const avg_low =  document.createElement('h3')
-    avg_low.innerHTML='23'
+    avg_low.innerHTML=Math.round(min_temp)+'°'
     avg_temp_container.appendChild(avg_low)
     const avg_high = document.createElement('h3')
-    avg_high.innerHTML='50'
+    avg_high.innerHTML=Math.round(max_temp)+'°'
     avg_temp_container.appendChild(avg_high)
     week_content.appendChild(avg_temp_container)
 
