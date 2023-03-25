@@ -45,7 +45,7 @@ body{
 
 .hourly-container{
     display:flex;
-    gap:16px;
+    gap:8   px;
     flex-direction: column;
     overflow-x:scroll;
     border:1px solid black;

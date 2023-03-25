@@ -1,13 +1,11 @@
 import { isThisHour } from "date-fns";
 import { parseISO } from "date-fns";
-
+import { getDay } from "date-fns";
 export function timeDifference(testing){
-    console.log(testing)
     const today = (new Date()).getHours();
     const inputHour = new Date(testing).getHours();
     const result = inputHour - today;
-    // console.log(inputHour)
-    // console.log(result)
+
     if(result===0){
         return 'now'
     }
@@ -29,7 +27,6 @@ export function timeDifference(testing){
     }
     
 }
-// console.log(data.time)
 export function showHourData(data){
     const container = document.querySelector('.hourly-content-container')
     const content= document.createElement('div')
@@ -47,7 +44,6 @@ export function showHourData(data){
     content.appendChild(temp)
     container.appendChild(content)
 
-    //weekly forecast
 }
 
 export function todayTemp(input){
@@ -57,15 +53,69 @@ export function todayTemp(input){
         current_temp.innerHTML= Math.round(input.temp_f)
     }
 }
+// function getDayType(day){
+//     let currentDay;
+//     switch(day){
+//         case 0:
+//             day = "Sunday";
+//             break;
+//         case 1:
+//             day = "Monday";
+//             break;
+//         case 2:
+//             day = "Tuesday";
+//             break;
+//         case 3:
+//             day = "Wednesday";
+//             break;
+//         case 4:
+//             day = "Thursday";
+//             break;
+//         case 5:
+//             day = "Friday";
+//             break;
+//         case 6:
+//             day = "Saturday";
+//     }
+//     return currentDay
+// }
+export function createWeek(input){
+    // let newNumber = new Date(input.date)
+    // getDayType(getDay(newNumber))
+    console.log(getDay(new Date(input.date)))
+    switch(getDay(new Date(input.date))){
+        case 0:
+            displayWeek("Sunday");
+            break;
+          case 1:
+            displayWeek("Monday");
+            break;
+          case 2:
+            displayWeek("Tuesday");
+            break;
+          case 3:
+            displayWeek("Wednesday");
+            break;
+          case 4:
+            displayWeek("Thursday");
+            break;
+          case 5:
+            displayWeek("Friday");
+            break;
+          case  6:
+            displayWeek("Saturday");
+        }
+}
 
 export function displayWeek(input){
+
     //create function that display the DAY (sunday,monday,etc)
     const week_container = document.querySelector('.weekly-container')
     const week_content = document.createElement('div')
     week_content.classList.add('weekly-content')
     week_container.appendChild(week_content)
     const week_title = document.createElement('h3')
-    week_title.innerHTML= 'today'
+    week_title.innerHTML= input
     week_content.appendChild(week_title)
 
     const week_icon =  document.createElement('div')
