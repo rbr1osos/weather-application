@@ -2,11 +2,9 @@ import './styles.css'
 import {showHourData} from './functions.js'
 import {todayTemp} from './functions'
 import { createWeek } from './functions.js'
-
+const current_img = document.querySelector('.current-img')
 const title_h2 = document.querySelector('.title')
-const temp_h1 = document.querySelector('.temp')
 const weather_h3 = document.querySelector('.weather-type')
-const feel_h3 = document.querySelector('.feel-like')
 const search_button = document.querySelector('.search-button')
 const search_input = document.getElementById('search')
 const UV_input=document.querySelector('.UV')
@@ -118,6 +116,7 @@ function displayWeather(forecast){
 
     }
     //display
+    current_img.src=forecast.current.condition.icon
     title_h2.innerHTML= forecast.location.name
     weather_h3.innerHTML = forecast.current.condition.text
 

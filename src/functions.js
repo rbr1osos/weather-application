@@ -35,12 +35,17 @@ export function showHourData(data){
     const hour = document.createElement('p')
     hour.classList.add('hour-time')
     hour.innerHTML= timeDifference(data.time)
+    
+    const icon  = document.createElement('img')
+    icon.classList.add('hour-icon')
+    icon.src=data.condition.icon;
 
     const temp = document.createElement('p')
     temp.classList.add('hour-temp')
     temp.innerHTML= Math.round(data.temp_f)+'°'
     
     content.appendChild(hour)
+    content.appendChild(icon)
     content.appendChild(temp)
     container.appendChild(content)
 
@@ -55,40 +60,42 @@ export function todayTemp(input){
 }
 
 export function createWeek(input){
-    console.log(input)
+    let icon=input.day.condition.icon
     let day;
-    //displays DAYS
-    switch(getDay(new Date(input.date))){
+    switch(getDay(new Date(input.date))+1){
         case 0:
-            day= "Sunday";
+            day= "Sun";
             break;
           case 1:
-            day="Monday";
+            day="Mon";
             break;
           case 2:
-            day="Tuesday";
+            day="Tues";
             break;
           case 3:
-            day="Wednesday";
+            day="Wed";
             break;
           case 4:
-            day="Thursday";
+            day="Thu";
             break;
           case 5:
-            day="Friday";
+            day="Fri";
             break;
           case  6:
-            day="Saturday";
+            day="Sat";
+            break;
+          default: day = 'Sun'
         }
+        
 
     //min temp
     const min_temp = input.day.mintemp_f
     const max_temp = input.day.maxtemp_f
 
-        displayWeek(day,min_temp,max_temp)
+        displayWeek(day,min_temp,max_temp,icon)
 }
 
-export function displayWeek(input,min_temp,max_temp){
+export function displayWeek(input,min_temp,max_temp,icon){
 
     //create function that display the DAY (sunday,monday,etc)
     const week_container = document.querySelector('.weekly-container')
@@ -99,8 +106,9 @@ export function displayWeek(input,min_temp,max_temp){
     week_title.innerHTML= input
     week_content.appendChild(week_title)
 
-    const week_icon =  document.createElement('div')
-    week_icon.innerHTML='Icon'
+    const week_icon =  document.createElement('img')
+    week_icon.classList.add('week-icon')
+    week_icon.src=icon
     week_content.appendChild(week_icon)
 
     const avg_temp_container  = document.createElement('div')
